@@ -92,13 +92,13 @@ pagestep = 256
 sectreq = ((rembyte - 1) // 4096) + 1
 pagereq = ((rembyte - 1) // pagestep) + 1
 
-print("Total sectors", sectreq)
-print("Total pages", pagereq)
+print("Total sectors", sectreq, flush=True)
+print("Total pages", pagereq, flush=True)
 
 for i in range(sectreq):
     saddr = bytes([(curraddr // 65535) & 0xFF, (curraddr // 256) & 0xF0, 0x00])
     
-    print("Flashing", i+1, "/", sectreq)
+    print("Flashing", i+1, "/", sectreq, flush=True)
     # print("Erasing", i, "at", "0x{:02x}{:02x}{:02x}".format(saddr[0], saddr[1], saddr[2]))
     ser.write(bytes([0x30]))
     
